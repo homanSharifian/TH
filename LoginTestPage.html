@@ -24,35 +24,10 @@
 		</th>
 	    </tr>
 	    <tr><th>
-	       <!-- this is session on memory <button id="btn" onclick="startSession()">Login</button>-->
-	       <button id="btn" onclick="setCookie('Ali','Alavi',2)">Login</button>	
+	       <button>Login</button>	
 	    </th></tr>
 	  </table>
 	  </div>	
 	  </form>
-	  <script>
-    		function startSession(username) {
-        		sessionStorage.setItem('username', username);
-		}
-		function updateMessage(){
-			const username=sessionStorage.getItem('username');
-			const messageDiv=document.getElementById('message');
-			if(username){
-			   messageDiv.innerHTML=`Welcome, ${username}! `;
-			   document.getElementById("btn").textContent="Logout";
-			} else {
-			   messageDiv.innerHTML = 'Please log in';
-			   document.getElementById("btn").textContent="Login";
-			}
-		  }
-		function setCookie(cname, cvalue, exdays) {
-  			const d = new Date();
-  			d.setTime(d.getTime() + (exdays*24*60*60*1000));
-  			let expires = "expires="+ d.toUTCString();
-  			document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-alert(document.cookie);
-		}		    
-	  </script>
 	</Body>
-
 </HTML>
