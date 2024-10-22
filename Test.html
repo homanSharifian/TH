@@ -1,18 +1,65 @@
 <HTML>
 	<Head>
+	  <title>This is title</title>
+	  <style>
+		.container {
+		   height: 100%;
+    		   display: flex;
+    		   justify-content: center;
+    		   align-items: center;
+		}
+		.msg {
+    		   color:red;
+		   align-items: center
+		}
+	     
+	  </style>
+	  <div class="msg" id="message" Style></div>	
 	</Head>
 	<Body>
-		<label for="username"> User Name:</label>
-		<input type="text" id="username" name="username">
-		<label for="username"> User Name:</label>
-		<input type="text" id="username" name="username">
-		<button onclick="CookiTest()">Login</button>
-
-	</Body>
-	<script>
-		function CookiTest(){
-		document.cookie = "username=John Doe";
-		alert();
+	  <form id="loginForm">
+	  <div class="container">
+	  <table>
+	    <tr>
+		<th>
+	           <label for="username"> User Name:</label>
+		</th>
+		<th>
+	           <input type="text" id="username" name="username">
+		</th>
+	    </tr>
+	    <tr>
+		<th>
+	          <label for="pass"> Password:</label>
+		</th>
+		<th>
+	          <input type="password" id="pass" name="pass">
+		</th>
+	    </tr>
+	    <tr><th>
+	       <button id="btn" onclick="startSession("ALI")">Login</button>	
+	    </th></tr>
+	  </table>
+	  </div>	
+	  </form>
+	  <script>
+    		function startSession(username) {
+        		sessionStorage.setItem('username', username);
+			alert(document. getElementById("username").value);
 		}
-	</script>
+		function updateMessage(){
+			const username=sessionStorage.getItem('username');
+			const messageDiv=document.getElementById('message');
+			if(username){
+			   messageDiv.innerHTML=`Welcome, ${username}! `;
+			   document.getElementById("btn").textContent="Logout";
+			} else {
+			   messageDiv.innerHTML = 'Please log in';
+			   document.getElementById("btn").textContent="Login";
+			}
+		  }
+		}		    
+	  </script>
+	</Body>
+
 </HTML>
