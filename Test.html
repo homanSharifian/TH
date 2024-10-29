@@ -37,22 +37,21 @@
 		</th>
 	    </tr>
 	    <tr><th>
-	       <button id="btn" onclick="startSession('ALI')">Login</button>	
+	       <button id="btn" onclick="startSession(event, document.getElementById('username').value)">Login</button>	
 	    </th></tr>
 	  </table>
 	  </div>	
 	  </form>
 	  <script>
-    		function startSession(username) {
-        		sessionStorage.setItem('username', username);
-			alert(document. getElementById("username").value);
+    	function startSession(event, username) {
+			event.preventDefault();
+			updateMessage(username);	
+
 		}
-		function updateMessage(){
-			const username=sessionStorage.getItem('username');
+		function updateMessage(username){
 			const messageDiv=document.getElementById('message');
 			if(username){
 			   messageDiv.innerHTML=`Welcome, ${username}! `;
-			   document.getElementById("btn").textContent="Logout";
 			} else {
 			   messageDiv.innerHTML = 'Please log in';
 			   document.getElementById("btn").textContent="Login";
